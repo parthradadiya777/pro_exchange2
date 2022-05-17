@@ -1,0 +1,51 @@
+name: pro_exchange2
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.16.2 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get_cli: ^1.7.1
+  get: 4.6.1
+  fancy_bottom_navigation:
+  google_sign_in: ^5.3.0
+  firebase_auth: ^3.3.15
+  firebase_core :
+  firebase_storage:
+  cloud_firestore:
+  resize: ^1.0.0
+  uuid: ^3.0.6
+  image_picker:
+  multi_image_picker2: ^5.0.0
+  firebase_database: 7.1.1
+  galleryimage:
+  firebase:
+  google_maps_flutter:
+  geolocator:
+  geocoding:
+  flutter_google_places: ^0.3.0
+  emoji_picker:
+  firebase_messaging:
+  basic_utils:
+  intl:
+  fluttertoast:
+  firestore_search:
+  file_picker:
+  flutter_document_picker:
+  pdf_viewer_plugin:
+
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: ^1.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/
