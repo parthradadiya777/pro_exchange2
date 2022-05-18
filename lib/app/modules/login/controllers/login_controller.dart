@@ -6,7 +6,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pro_exchange2/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../routes/app_pages.dart';
 import '../../bottom_navigation_bar/views/bottom_navigation_bar_view.dart';
 import '../../home/views/home_view.dart';
