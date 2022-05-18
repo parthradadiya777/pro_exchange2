@@ -462,6 +462,7 @@ class HomeView extends GetView<HomeController> {
                                         List<dynamic> images =snapshot.data!.docs[index]['imgurl'] as List<dynamic>;
                                         String title = snapshot.data!.docs[index]['Adtitle'];
                                         String sell = snapshot.data!.docs[index]['sell'];
+                                        String id = snapshot.data!.docs[index].id;
 
                                         return InkWell(
                                           onTap: (){
@@ -469,6 +470,7 @@ class HomeView extends GetView<HomeController> {
                                               'images':images,
                                               'Adtitle':title,
                                               'sell':sell,
+                                              'id':id,
                                             });
                                           },
                                           child: Container(
