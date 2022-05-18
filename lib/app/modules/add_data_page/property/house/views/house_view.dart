@@ -9,6 +9,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pro_exchange2/app/data/houseData.dart';
 import 'package:resize/resize.dart';
+import '../../../../../../Colors/Colors.dart';
 import '../controllers/house_controller.dart';
 import 'package:path/path.dart' as Path;
 
@@ -213,417 +214,448 @@ class _HouseViewState extends State<HouseView> {
           centerTitle: true,
         ),
         body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Include Some Details',
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Text('Type'),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                // width: width(context)*1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(35.0),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                      isExpanded: true,
-                      hint: Text("Select"),
-                      value: selected as String,
-                      onChanged: (newValue) {
-                        setSelected(newValue!);
-                      },
-                      items: house
-                          .map((fc) => DropdownMenuItem<String>(
-                                child: Text(fc),
-                                value: fc,
-                              ))
-                          .toList()),
-                ),
-              ),
-              Text('Bedrooms'),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                // width: width(context)*1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(35.0),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                      isExpanded: true,
-                      hint: Text("Select"),
-                      value: bed as String,
-                      onChanged: (newValue) {
-                        bedselected(newValue!);
-                      },
-                      items: beds
-                          .map((fc) => DropdownMenuItem<String>(
-                                child: Text(fc),
-                                value: fc,
-                              ))
-                          .toList()),
-                ),
-              ),
-              Text('BathRooms'),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                // width: width(context)*1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(35.0),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                      isExpanded: true,
-                      hint: Text("Select"),
-                      value: bath as String,
-                      onChanged: (newValue) {
-                        bathsselected(newValue!);
-                      },
-                      items: baths
-                          .map((fc) => DropdownMenuItem<String>(
-                                child: Text(fc),
-                                value: fc,
-                              ))
-                          .toList()),
-                ),
-              ),
-              Text('Furnishing'),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                // width: width(context)*1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(35.0),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                      isExpanded: true,
-                      hint: Text("Select"),
-                      value: furnish as String,
-                      onChanged: (newValue) {
-                        furnishesselected(newValue!);
-                      },
-                      items: furnishes
-                          .map((fc) => DropdownMenuItem<String>(
-                                child: Text(fc),
-                                value: fc,
-                              ))
-                          .toList()),
-                ),
-              ),
-              Text('Construction'),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                // width: width(context)*1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(35.0),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                      isExpanded: true,
-                      hint: Text("Select"),
-                      value: construction as String,
-                      onChanged: (newValue) {
-                        constructionselected(newValue!);
-                      },
-                      items: constructions
-                          .map((fc) => DropdownMenuItem<String>(
-                                child: Text(fc),
-                                value: fc,
-                              ))
-                          .toList()),
-                ),
-              ),
-              Text('Listed By'),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                // width: width(context)*1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(35.0),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                      isExpanded: true,
-                      hint: Text("Select"),
-                      value: listed as String,
-                      onChanged: (newValue) {
-                        listesselected(newValue!);
-                      },
-                      items: listes
-                          .map((fc) => DropdownMenuItem<String>(
-                                child: Text(fc),
-                                value: fc,
-                              ))
-                          .toList()),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10.h),
-                child: TextFormField(
-                  controller: superbuildarea,
-                  decoration: InputDecoration(
-                    hintText: 'Super BuiltUp area(ft)*',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.r)),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10.h),
-                child: TextFormField(
-                  controller: carpetArea,
-                  decoration: InputDecoration(
-                    hintText: 'carpetArea',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.r)),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10.h),
-                child: TextFormField(
-                  controller: Mainteance,
-                  decoration: InputDecoration(
-                    hintText: 'Mainteance(monthly)',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.r)),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10.h),
-                child: TextFormField(
-                  controller: TotalFloors,
-                  decoration: InputDecoration(
-                    hintText: 'TotalFloors',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.r)),
-                  ),
-                ),
-              ),
-              Text('Facing'),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                // width: width(context)*1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(35.0),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                      isExpanded: true,
-                      hint: Text("Select"),
-                      value: face as String,
-                      onChanged: (newValue) {
-                        faceselected(newValue!);
-                      },
-                      items: facess
-                          .map((fc) => DropdownMenuItem<String>(
-                                child: Text(fc),
-                                value: fc,
-                              ))
-                          .toList()),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10.h),
-                child: TextFormField(
-                  controller: projectName,
-                  decoration: InputDecoration(
-                    hintText: 'Project Name',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.r)),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10.h),
-                child: TextFormField(
-                  controller: Adtitle,
-                  decoration: InputDecoration(
-                    hintText: 'Ad title',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.r)),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10.h),
-                child: TextFormField(
-                  controller: description,
-                  decoration: InputDecoration(
-                    hintText: 'Description',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.r)),
-                  ),
-                ),
-              ),
-              Column(
+          child: Center(
+            child: Container(
+              width: 80.vw,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Text(
+                  //   'Include Some Details',
+                  // ),
+                  SizedBox(height:20,),
+                  Container(child: Text('Type',style: TextStyle(color: textColor,fontWeight: FontWeight.bold),)),
+                  SizedBox(height: 5,),
+
                   Container(
-                    height: 150.h,
-                    width: 400.w,
-                    color: Colors.purple,
-                    child: Container(
-                      padding: EdgeInsets.all(4),
-                      child: GridView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: _image.length + 1,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 1),
-                          itemBuilder: (context, index) {
-                            return index == 0
-                                ? Center(
-                                    child: IconButton(
-                                        icon: Icon(Icons.add),
-                                        onPressed: () =>
-                                            !uploading ? chooseImage() : null),
-                                  )
-                                : Container(
-                                    margin: EdgeInsets.all(3),
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: FileImage(_image[index - 1]),
-                                            fit: BoxFit.cover)),
-                                  );
-                          }),
+                    // width: width(context)*1,
+                    width: 50.vw,
+                    padding: EdgeInsets.only(left: 20,right: 20),
+                    // width: width(context)*1,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      border: Border.all(color: textColor,width: 1),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          isExpanded: true,
+                          hint: Text("Select"),
+                          value: selected as String,
+                          onChanged: (newValue) {
+                            setSelected(newValue!);
+                          },
+                          items: house
+                              .map((fc) => DropdownMenuItem<String>(
+                            child: Text(fc),
+                            value: fc,
+                          ))
+                              .toList()),
                     ),
                   ),
-                  uploading
-                      ? Center(
-                          child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Container(
-                              child: Text(
-                                'uploading...',
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            CircularProgressIndicator(
-                              value: val,
-                              valueColor:
-                                  AlwaysStoppedAnimation<Color>(Colors.green),
-                            )
-                          ],
-                        ))
-                      : Container(),
-                ],
-              ),
-              Text('Sell'),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                // width: width(context)*1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(35.0),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                      isExpanded: true,
-                      hint: Text("Select"),
-                      value: biding as String,
-                      onChanged: (newValue) {
-                        bidsselected(newValue!);
-                      },
-                      items: bids
-                          .map((fc) => DropdownMenuItem<String>(
-                                child: Text(fc),
-                                value: fc,
-                              ))
-                          .toList()),
-                ),
-              ),
-              InkWell(
-                onTap: (){
-                  setState(() {});
-                },
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  SizedBox(height: 20,),
+
+                  Container(child: Text('Bedrooms',style: TextStyle(color: textColor,fontWeight: FontWeight.bold),)),
+                  SizedBox(height: 5,),
+
+                  Container(
+                    // width: width(context)*1,
+                    width: 50.vw,
+                    padding: EdgeInsets.only(left: 20,right: 20),
+                    // width: width(context)*1,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      border: Border.all(color: textColor,width: 1),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          isExpanded: true,
+                          hint: Text("Select"),
+                          value: bed as String,
+                          onChanged: (newValue) {
+                            bedselected(newValue!);
+                          },
+                          items: beds
+                              .map((fc) => DropdownMenuItem<String>(
+                            child: Text(fc),
+                            value: fc,
+                          ))
+                              .toList()),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+
+                  Container(child: Text('Bathrooms',style: TextStyle(color: textColor,fontWeight: FontWeight.bold),)),
+                  SizedBox(height: 5,),
+
+                  Container(
+                    width: 50.vw,
+                    padding: EdgeInsets.only(left: 20,right: 20),
+                    // width: width(context)*1,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      border: Border.all(color: textColor,width: 1),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          isExpanded: true,
+                          hint: Text("Select"),
+                          value: bath as String,
+                          onChanged: (newValue) {
+                            bathsselected(newValue!);
+                          },
+                          items: baths
+                              .map((fc) => DropdownMenuItem<String>(
+                            child: Text(fc),
+                            value: fc,
+                          ))
+                              .toList()),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+
+                  Container(child: Text('Furnishing',style: TextStyle(color: textColor,fontWeight: FontWeight.bold),)),
+                  SizedBox(height: 5,),
+
+                  Container(
+                    width: 50.vw,
+                    padding: EdgeInsets.only(left: 20,right: 20),
+                    // width: width(context)*1,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      border: Border.all(color: textColor,width: 1),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          isExpanded: true,
+                          hint: Text("Select"),
+                          value: furnish as String,
+                          onChanged: (newValue) {
+                            furnishesselected(newValue!);
+                          },
+                          items: furnishes
+                              .map((fc) => DropdownMenuItem<String>(
+                            child: Text(fc),
+                            value: fc,
+                          ))
+                              .toList()),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+
+                  Container(child: Text('Construction',style: TextStyle(color: textColor,fontWeight: FontWeight.bold),)),
+                  SizedBox(height: 5,),
+
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
+                    // width: width(context)*1,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(35.0),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          isExpanded: true,
+                          hint: Text("Select"),
+                          value: construction as String,
+                          onChanged: (newValue) {
+                            constructionselected(newValue!);
+                          },
+                          items: constructions
+                              .map((fc) => DropdownMenuItem<String>(
+                                    child: Text(fc),
+                                    value: fc,
+                                  ))
+                              .toList()),
+                    ),
+                  ),
+                  Text('Listed By'),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
+                    // width: width(context)*1,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(35.0),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          isExpanded: true,
+                          hint: Text("Select"),
+                          value: listed as String,
+                          onChanged: (newValue) {
+                            listesselected(newValue!);
+                          },
+                          items: listes
+                              .map((fc) => DropdownMenuItem<String>(
+                                    child: Text(fc),
+                                    value: fc,
+                                  ))
+                              .toList()),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.h),
+                    child: TextFormField(
+                      controller: superbuildarea,
+                      decoration: InputDecoration(
+                        hintText: 'Super BuiltUp area(ft)*',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.r)),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.h),
+                    child: TextFormField(
+                      controller: carpetArea,
+                      decoration: InputDecoration(
+                        hintText: 'carpetArea',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.r)),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.h),
+                    child: TextFormField(
+                      controller: Mainteance,
+                      decoration: InputDecoration(
+                        hintText: 'Mainteance(monthly)',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.r)),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.h),
+                    child: TextFormField(
+                      controller: TotalFloors,
+                      decoration: InputDecoration(
+                        hintText: 'TotalFloors',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.r)),
+                      ),
+                    ),
+                  ),
+                  Text('Facing'),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
+                    // width: width(context)*1,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(35.0),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          isExpanded: true,
+                          hint: Text("Select"),
+                          value: face as String,
+                          onChanged: (newValue) {
+                            faceselected(newValue!);
+                          },
+                          items: facess
+                              .map((fc) => DropdownMenuItem<String>(
+                                    child: Text(fc),
+                                    value: fc,
+                                  ))
+                              .toList()),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.h),
+                    child: TextFormField(
+                      controller: projectName,
+                      decoration: InputDecoration(
+                        hintText: 'Project Name',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.r)),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.h),
+                    child: TextFormField(
+                      controller: Adtitle,
+                      decoration: InputDecoration(
+                        hintText: 'Ad title',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.r)),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.h),
+                    child: TextFormField(
+                      controller: description,
+                      decoration: InputDecoration(
+                        hintText: 'Description',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.r)),
+                      ),
+                    ),
+                  ),
+                  Column(
                     children: [
-                      // Text('Coordinates Points',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
-                      // SizedBox(height: 10,),
-                      // Text(location,style: TextStyle(color: Colors.black,fontSize: 16),),
-                      // SizedBox(height: 10,),
-                      ElevatedButton(onPressed: () async{
-                        Position position = await _getGeoLocationPosition();
-                        latitude='Lat: ${position.latitude} , Long: ${position.longitude}';
-                        GetAddressFromLatLong(position);
-
-                      }, child: Text('Get Location')),
-                      SizedBox(height: 10,),
                       Container(
-                        padding: EdgeInsets.only(top: 10,left: 5,right: 5),
-
-                        height: 60,width: 200,
-                        child: ListView(
-                          scrollDirection: Axis.vertical,
-                          children: [
-                            Text('$Address'),
-                          ],
+                        height: 150.h,
+                        width: 400.w,
+                        color: Colors.purple,
+                        child: Container(
+                          padding: EdgeInsets.all(4),
+                          child: GridView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: _image.length + 1,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 1),
+                              itemBuilder: (context, index) {
+                                return index == 0
+                                    ? Center(
+                                        child: IconButton(
+                                            icon: Icon(Icons.add),
+                                            onPressed: () =>
+                                                !uploading ? chooseImage() : null),
+                                      )
+                                    : Container(
+                                        margin: EdgeInsets.all(3),
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: FileImage(_image[index - 1]),
+                                                fit: BoxFit.cover)),
+                                      );
+                              }),
                         ),
                       ),
+                      uploading
+                          ? Center(
+                              child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  child: Text(
+                                    'uploading...',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                CircularProgressIndicator(
+                                  value: val,
+                                  valueColor:
+                                      AlwaysStoppedAnimation<Color>(Colors.green),
+                                )
+                              ],
+                            ))
+                          : Container(),
                     ],
                   ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10.h),
-                child: TextFormField(
-                  controller: price,
-                  decoration: InputDecoration(
-                    hintText: 'Price',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.r)),
+                  Text('Sell'),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
+                    // width: width(context)*1,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(35.0),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          isExpanded: true,
+                          hint: Text("Select"),
+                          value: biding as String,
+                          onChanged: (newValue) {
+                            bidsselected(newValue!);
+                          },
+                          items: bids
+                              .map((fc) => DropdownMenuItem<String>(
+                                    child: Text(fc),
+                                    value: fc,
+                                  ))
+                              .toList()),
+                    ),
                   ),
-                ),
-              ),
-              MaterialButton(
-                onPressed: () async {
-                  await uploadFile();
-                  HouseStoreData().HouseData1(
-                      selected,
-                      bed,
-                      bath,
-                      furnish,
-                      construction,
-                      listed,
-                      superbuildarea.text,
-                      carpetArea.text,
-                      Mainteance.text,
-                      TotalFloors.text,
-                      face,
-                      projectName.text,
-                      Adtitle.text,
-                      description.text,
-                      biding,
-                      price.text,
-                      a,
-                      _auth.currentUser!.uid,'House',
-                  Address,
-                    latitude,
-                    'H'
-                  );
-                  cleartext();
-                  //  .then((value) => Get.to(() => AddImage()));
-                },
-                child: Card(
-                  child: Container(
-                    alignment: Alignment.center,
-                    //color: Colors.yellow,
-                    height: 50.h,
-                    width: 200.w,
-                    child: Text('Save'),
+                  InkWell(
+                    onTap: (){
+                      setState(() {});
+                    },
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // Text('Coordinates Points',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+                          // SizedBox(height: 10,),
+                          // Text(location,style: TextStyle(color: Colors.black,fontSize: 16),),
+                          // SizedBox(height: 10,),
+                          ElevatedButton(onPressed: () async{
+                            Position position = await _getGeoLocationPosition();
+                            latitude='Lat: ${position.latitude} , Long: ${position.longitude}';
+                            GetAddressFromLatLong(position);
+
+                          }, child: Text('Get Location')),
+                          SizedBox(height: 10,),
+                          Container(
+                            padding: EdgeInsets.only(top: 10,left: 5,right: 5),
+
+                            height: 60,width: 200,
+                            child: ListView(
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                Text('$Address'),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
+                  Container(
+                    padding: EdgeInsets.all(10.h),
+                    child: TextFormField(
+                      controller: price,
+                      decoration: InputDecoration(
+                        hintText: 'Price',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.r)),
+                      ),
+                    ),
+                  ),
+                  MaterialButton(
+                    onPressed: () async {
+                      await uploadFile();
+                      HouseStoreData().HouseData1(
+                          selected,
+                          bed,
+                          bath,
+                          furnish,
+                          construction,
+                          listed,
+                          superbuildarea.text,
+                          carpetArea.text,
+                          Mainteance.text,
+                          TotalFloors.text,
+                          face,
+                          projectName.text,
+                          Adtitle.text,
+                          description.text,
+                          biding,
+                          price.text,
+                          a,
+                          _auth.currentUser!.uid,'House',
+                      Address,
+                        latitude,
+                        'H'
+                      );
+                      cleartext();
+                      //  .then((value) => Get.to(() => AddImage()));
+                    },
+                    child: Card(
+                      child: Container(
+                        alignment: Alignment.center,
+                        //color: Colors.yellow,
+                        height: 50.h,
+                        width: 200.w,
+                        child: Text('Save'),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ));
   }
