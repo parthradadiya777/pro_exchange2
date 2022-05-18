@@ -6,6 +6,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const SIGN_UP_PAGE = _Paths.SIGN_UP_PAGE;
   static const PROFILE_PAGE = _Paths.PROFILE_PAGE;
+  static const PROFILE_PRODUCT_DETAILS = _Paths.PROFILE_PAGE + _Paths.PROFILE_PRODUCT_DETAILS;
   static const VERIFIERS = _Paths.VERIFIERS;
   static const ORDER = _Paths.ORDER;
   static const BUY_PAGE = _Paths.BUY_PAGE;
@@ -69,6 +70,7 @@ abstract class _Paths {
   static const HOME = '/home';
   static const SIGN_UP_PAGE = '/sign-up-page';
   static const PROFILE_PAGE = '/profile-page';
+  static const PROFILE_PRODUCT_DETAILS = '/profile_product_details';
   static const VERIFIERS = '/verifiers';
   static const ORDER = '/order';
   static const BUY_PAGE = '/buy-page';

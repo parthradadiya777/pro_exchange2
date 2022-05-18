@@ -44,6 +44,7 @@ import '../modules/profile_page/bindings/profile_page_binding.dart';
 import '../modules/profile_page/edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/profile_page/edit_profile/views/edit_profile_view.dart';
 import '../modules/profile_page/views/profile_page_view.dart';
+import '../modules/profile_page/views/profile_product_details.dart';
 import '../modules/signUp_page/bindings/sign_up_page_binding.dart';
 import '../modules/signUp_page/views/sign_up_page_view.dart';
 import '../modules/verifiers/bindings/verifiers_binding.dart';
@@ -86,6 +87,10 @@ class AppPages {
         GetPage(
           name: _Paths.EDIT_IMAGE,
           page: () => EditimageView(),
+        ),
+        GetPage(
+          name: _Paths.PROFILE_PRODUCT_DETAILS,
+          page: () => profile_product_details(),
         ),
       ],
     ),

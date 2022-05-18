@@ -93,11 +93,7 @@ class _FurnitureViewState extends State<FurnitureView> {
 
   String biding = "Sell";
   //var selectedDrowpdown = 'abc';
-  List bids = [
-    'Sell',
-    'Bid',
-    'Exchange',
-  ];
+
 
   void bidsselected(String value) {
     setState(() {
@@ -347,4 +343,10 @@ class _FurnitureViewState extends State<FurnitureView> {
   }
 }
 
+
+List bids = [
+  'Sell',
+  'Bid',
+  'Exchange',
+];
 

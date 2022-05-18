@@ -46,7 +46,7 @@ class BikesStoreData {
 
       _firestore
           .collection('products')
-          .doc('bikes' + b.toString())
+          .doc()
           .set(bikesData.toJson());
 
       res = "Success";

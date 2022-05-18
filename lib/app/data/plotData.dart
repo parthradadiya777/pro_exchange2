@@ -55,7 +55,7 @@ class PlotStoreData {
 
       _firestore
           .collection('products')
-          .doc('ploat' + p.toString())
+          .doc()
           .set(plotData.toJson());
 
       res = "Success";
