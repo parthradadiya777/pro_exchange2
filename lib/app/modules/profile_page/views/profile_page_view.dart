@@ -250,7 +250,7 @@ class _ProfilePageViewState extends State<ProfilePageView> {
                                   List images =snapshot.data!.docs[i]['imgurl'] ;
                                   var category = snapshot.data!.docs[i]['category'];
                                   var sell = snapshot.data!.docs[i]['sell'];
-
+                            print('ppppp');
                                   return Container(
                                     height: 500,
                                     width: MediaQuery.of(context).size.width*1,
