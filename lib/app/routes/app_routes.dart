@@ -62,6 +62,8 @@ abstract class Routes {
   //     _Paths.CATEGORY + _Paths.ELECTRONICSCATEGORY + _Paths.OTHERS;
   static const GOOGLE_MAPS = _Paths.GOOGLE_MAPS;
   static const DETAILS = _Paths.HOME + _Paths.DETAILS;
+  static const CHATS = _Paths.CHATS;
+  static const CHAT_PAGE = _Paths.CHAT_PAGE;
 }
 
 abstract class _Paths {
@@ -111,4 +113,6 @@ abstract class _Paths {
   //static const OTHERS = '/others';
   static const GOOGLE_MAPS = '/google-maps';
   static const DETAILS = '/details';
+  static const CHATS = '/chats';
+  static const CHAT_PAGE = '/chat-page';
 }
