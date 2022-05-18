@@ -204,7 +204,7 @@ class AddDataPageView extends GetView<AddDataPageController> {
                       child: InkWell(
                         onTap: (){
 
-                          // Get.to(()=> ElectronicsDetailsView());
+                           Get.to(()=> ElectronicsDetailsView());
 
                         },
                         child: Container(

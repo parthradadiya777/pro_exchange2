@@ -1,6 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/example/pro_exchange2/MainActivity.java
- com.example.pro_exchange2.MainActivity
-com/example/pro_exchange2/BuildConfig.java
- com.example.pro_exchange2.BuildConfig
