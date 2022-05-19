@@ -550,8 +550,21 @@ class HomeView extends GetView<HomeController> {
                                                             ),
                                                           ),
                                                           Container(
-                                                            child: FittedBox(fit: BoxFit.contain,
-                                                              child: isthere ? Image.network(snapshot.data!.docs[index]['imgurl'][0]) : Image.network('https://kodular-community.s3.dualstack.eu-west-1.amazonaws.com/optimized/2X/6/6f5d1ae808fde2628ee1aa7accef955af67c6771_2_1024x399.png'),
+                                                            child:  FittedBox(
+                                                              fit: BoxFit.cover,
+                                                              child:isthere
+                                                                  ? Image.network(
+                                                                  snapshot.data!.docs[index]['imgurl'][0],
+                                                              loadingBuilder: (c,child,loading){
+                                                                    if(loading == null){
+                                                                      return child;
+                                                                    }
+                                                                    return Center(
+                                                                      child: CircularProgressIndicator(),
+                                                                    );
+                                                              },
+                                                              )
+                                                                  : Text('No Image')
                                                             ),
                                                           ),
                                                         ],
