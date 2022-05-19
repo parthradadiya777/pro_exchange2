@@ -12,6 +12,7 @@ import '../controllers/details_controller.dart';
 
 class DetailsView extends StatefulWidget {
   const DetailsView({Key? key}) : super(key: key);
+
   @override
   State<DetailsView> createState() => _DetailsViewState();
 }
@@ -134,20 +135,15 @@ class _DetailsViewState extends State<DetailsView> {
   Widget build(BuildContext context) {
     final data =
         ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>;
-    final docid = FirebaseFirestore
-        .instance
-        .collection(
-        'products')
-        .doc()
-        .id;
+    final docid = FirebaseFirestore.instance.collection('products').doc().id;
     var images = data['images'] as List;
     var details = data['Adtitle'];
     var sell = data['sell'];
     var deal = data['alldeals'];
-    var id=data['id'];
-var deals = FirebaseFirestore.instance.collection('products').doc(docid).get();
+    var id = data['id'];
+    var deals =
+        FirebaseFirestore.instance.collection('products').doc(docid).get();
     int a;
-
 
     print(images);
 
@@ -698,23 +694,35 @@ var deals = FirebaseFirestore.instance.collection('products').doc(docid).get();
                                                                     ),
                                                                   ),
                                                                   InkWell(
-
-                                                                    onTap: () async{
-
-
+                                                                    onTap:
+                                                                        () async {
                                                                       final uid = FirebaseAuth
                                                                           .instance
                                                                           .currentUser!
                                                                           .uid;
-                                                                        var m = await  FirebaseFirestore.instance.collection('products').doc(id).get() ;
-                                                                        var j=m['c'];
-                                                                      if(j!=null)
-                                                                      a=j;
+                                                                      var m = await FirebaseFirestore
+                                                                          .instance
+                                                                          .collection(
+                                                                              'products')
+                                                                          .doc(
+                                                                              id)
+                                                                          .get();
+                                                                      var j = m[
+                                                                          'c'];
+                                                                      if (j !=
+                                                                          null)
+                                                                        a = j;
                                                                       else
-                                                                        a=0;
+                                                                        a = 0;
                                                                       a++;
 
-                                                                      FirebaseFirestore.instance.collection('products').doc(id).set(
+                                                                      FirebaseFirestore
+                                                                          .instance
+                                                                          .collection(
+                                                                              'products')
+                                                                          .doc(
+                                                                              id)
+                                                                          .set(
                                                                         {
                                                                           "alldeals":
                                                                               {
@@ -730,8 +738,15 @@ var deals = FirebaseFirestore.instance.collection('products').doc(docid).get();
                                                                             merge:
                                                                                 true),
                                                                       );
-                                                                      FirebaseFirestore.instance.collection('products').doc(id).update(
-                                                                          {"c":a});
+                                                                      FirebaseFirestore
+                                                                          .instance
+                                                                          .collection(
+                                                                              'products')
+                                                                          .doc(
+                                                                              id)
+                                                                          .update({
+                                                                        "c": a
+                                                                      });
 
                                                                       offer
                                                                           .clear();

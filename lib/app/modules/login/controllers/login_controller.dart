@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -6,11 +7,15 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pro_exchange2/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pro_exchange2/app/modules/home/controllers/home_controller.dart';
+import 'package:pro_exchange2/app/modules/home/controllers/home_controller.dart';
+import 'package:pro_exchange2/app/modules/home/controllers/home_controller.dart';
+import 'package:pro_exchange2/app/modules/home/controllers/home_controller.dart';
 import '../../../routes/app_pages.dart';
 import '../../bottom_navigation_bar/views/bottom_navigation_bar_view.dart';
+import '../../home/controllers/home_controller.dart';
 import '../../home/views/home_view.dart';
 import '../../signUp_page/views/auth_file.dart';
-
 
 class LoginController extends GetxController {
   //TODO: Implement LoginController
@@ -20,6 +25,7 @@ class LoginController extends GetxController {
   TextEditingController password = TextEditingController();
 
   final count = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -30,56 +36,69 @@ class LoginController extends GetxController {
     super.onReady();
   }
 
+  var name;
+  var number;
+  var emailid;
+  var id;
+
   @override
   void onClose() {}
+
   void increment() => count.value++;
 
+  void logingoogle() async {
+    CustomFullScreenDialog.showDialog();
+    print('object');
+    GoogleSignInAccount? googleSignInAccount =
+        await homeController.googleSignIn!.signIn();
+    try {
+      if (googleSignInAccount != null) {
+        GoogleSignInAuthentication? googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+        OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
+            accessToken: googleSignInAuthentication.accessToken,
+            idToken: googleSignInAuthentication.idToken);
+        await homeController.firebaseAuth.signInWithCredential(oAuthCredential);
+        // CustomFullScreenDialog.showDialog();
+        name = FirebaseAuth.instance.currentUser!.displayName;
+        number = FirebaseAuth.instance.currentUser!.phoneNumber;
+        emailid = FirebaseAuth.instance.currentUser!.email;
+        id = FirebaseAuth.instance.currentUser!.uid;
+        await FirebaseFirestore.instance.collection('user').doc(id).set({
+          'name': name,
+          'email': emailid,
+          'number': number,
+          'password': '',
+          'image': null,
+        });
 
-void logingoogle() async{
-  CustomFullScreenDialog.showDialog();
-  print('object');
-  GoogleSignInAccount? googleSignInAccount = await homeController.googleSignIn?.signIn();
-  print(googleSignInAccount);
-  try {
-    if(googleSignInAccount != null){
-      GoogleSignInAuthentication? googleSignInAuthentication = await googleSignInAccount.authentication;
-      OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
-          accessToken: googleSignInAuthentication.accessToken,
-          idToken: googleSignInAuthentication.idToken
-      );
-      await homeController.firebaseAuth.signInWithCredential(oAuthCredential);
-      CustomFullScreenDialog.showDialog();
+        Get.offNamed(Routes.BOTTOM_NAVIGATION_BAR);
+      } else {
+        CustomFullScreenDialog.cancelDialog();
+      }
+    } on PlatformException catch (e) {
+      print('platform excetion:' + e.toString());
 
+      // TODO
+    } catch (e) {
+      print(e.toString());
     }
-    else{
-      CustomFullScreenDialog.cancelDialog();
-    }
-  } on PlatformException catch(e) {
-    print('platform excetion:' + e.toString());
+  }
 
-    // TODO
-  } catch (e){
-    print(e.toString());
-  }
-  }
-  void logginauth() async{
-    String res = await AuthMethod().logginUser(email: email.text, passsword: password.text);
-    if(res == 'Success'){
-     //  Get.to(()=> BottomNavigationBarView());
+  void logginauth() async {
+    String res = await AuthMethod()
+        .logginUser(email: email.text, passsword: password.text);
+    if (res == 'Success') {
+      //  Get.to(()=> BottomNavigationBarView());
       Get.off(BottomNavigationBarView());
       print(res);
-
-    }else{
+    } else {
       print('something went worng');
       print(res);
     }
   }
-
-
-
-
-
 }
+
 class CustomFullScreenDialog {
   static void showDialog() {
     Get.dialog(

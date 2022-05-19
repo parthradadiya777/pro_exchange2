@@ -32,6 +32,8 @@ import '../modules/home/details/bindings/details_binding.dart';
 import '../modules/home/details/views/details_view.dart';
 import '../modules/home/views/home_view.dart';
 
+import '../modules/login/bindings/login_binding.dart';
+import '../modules/login/views/login_view.dart';
 import '../modules/order/bindings/order_binding.dart';
 import '../modules/order/chat_screen/bindings/chat_screen_binding.dart';
 import '../modules/order/chat_screen/views/chat_screen.dart';
@@ -73,6 +75,11 @@ class AppPages {
       name: _Paths.SIGN_UP_PAGE,
       page: () => SignUpPageView(),
       binding: SignUpPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOGIN_PAGE,
+      page: () => LoginView(),
+      binding: LoginBinding(),
     ),
     GetPage(
       name: _Paths.PROFILE_PAGE,

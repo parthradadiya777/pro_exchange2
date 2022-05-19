@@ -10,6 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as Path;
 
@@ -134,6 +135,15 @@ class _ProfilePageViewState extends State<ProfilePageView> {
   var percentage;
   File? file;
   UploadTask? task;
+  GoogleSignIn? googleSignIn;
+
+  void loggout() async {
+    // final firebaseAuth = FirebaseAuth.instance;
+    if (googleSignIn != null) {
+      await googleSignIn!.signOut();
+    }
+    await FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -153,7 +163,8 @@ class _ProfilePageViewState extends State<ProfilePageView> {
         actions: [
           IconButton(
               onPressed: () {
-                //   loggout();
+                loggout();
+                Get.offAllNamed(Routes.LOGIN_PAGE);
               },
               icon: Icon(Icons.logout))
         ],
