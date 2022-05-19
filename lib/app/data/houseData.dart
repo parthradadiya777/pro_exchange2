@@ -68,7 +68,7 @@ class HouseStoreData {
 
       _firestore
           .collection('products')
-          .doc('House' + h.toString())
+          .doc()
           .set(
           houseData.toJson()
       );

@@ -52,7 +52,7 @@ class CarStoreData {
       l++;
       _firestore
           .collection('products/car')
-          .doc('car'+ l.toString())
+          .doc()
           .set(carData.toJson());
       res = "Success";
     } catch (err) {

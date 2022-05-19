@@ -11,11 +11,9 @@ class HomeController extends GetxController {
   RxInt selectedindex = 1.obs;
   RxInt count = 0.obs;
 
-   GoogleSignIn? googleSignIn;
+  GoogleSignIn? googleSignIn;
   var isSignin = false.obs;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-
-
 
   @override
   void onInit() {
@@ -23,19 +21,19 @@ class HomeController extends GetxController {
   }
 
   @override
-  void onReady() async{
+  void onReady() async {
     super.onReady();
 
     googleSignIn = GoogleSignIn();
-   // ever(isSignin, handleAuthChnage);
+    // ever(isSignin, handleAuthChnage);
     isSignin.value = await firebaseAuth.currentUser != null;
     firebaseAuth.authStateChanges().listen((event) {
-      isSignin.value = event!=null;
-
+      isSignin.value = event != null;
     });
   }
-  void signOut() async{
-   await AuthMethod().signOut();
+
+  void signOut() async {
+    await AuthMethod().signOut();
   }
 
   @override
@@ -43,15 +41,13 @@ class HomeController extends GetxController {
 
   void increment() => count.value++;
 
-
-  // void handleAuthChnage(isLoggin) {
-  //   if (isLoggin) {
-  //     Get.offAllNamed(Routes.HOME, arguments: firebaseAuth.currentUser);
-  //   }
-  //   else {
-  //       Get.offAllNamed(Routes.LOGIN);
-  //   }
-  // }
-
+// void handleAuthChnage(isLoggin) {
+//   if (isLoggin) {
+//     Get.offAllNamed(Routes.HOME, arguments: firebaseAuth.currentUser);
+//   }
+//   else {
+//       Get.offAllNamed(Routes.LOGIN);
+//   }
+// }
 
 }

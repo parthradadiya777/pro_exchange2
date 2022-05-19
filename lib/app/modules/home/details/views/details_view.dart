@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +12,13 @@ import '../controllers/details_controller.dart';
 
 class DetailsView extends StatefulWidget {
   const DetailsView({Key? key}) : super(key: key);
+
   @override
   State<DetailsView> createState() => _DetailsViewState();
 }
 
 class _DetailsViewState extends State<DetailsView> {
   TextEditingController offer = TextEditingController();
-
-
 
   bool selected = true;
   bool selected1 = true;
@@ -124,24 +124,28 @@ class _DetailsViewState extends State<DetailsView> {
     });
   }
 
-  String fore(){
+  String fore() {
     var time = DateTime.now();
     var formater = DateFormat('hh:mm');
     String fo = formater.format(time);
     return fo;
-
-
   }
+
   @override
   Widget build(BuildContext context) {
     final data =
         ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>;
-
+    final docid = FirebaseFirestore.instance.collection('products').doc().id;
     var images = data['images'] as List;
     var details = data['Adtitle'];
     var sell = data['sell'];
+    var deal = data['alldeals'];
+    var id = data['id'];
+    var deals =
+        FirebaseFirestore.instance.collection('products').doc(docid).get();
+    int a;
 
-print(images);
+    print(images);
 
     return Scaffold(
       appBar: AppBar(
@@ -156,7 +160,12 @@ print(images);
         ),
         centerTitle: true,
         actions: [
-       TextButton(onPressed: (){}, child: Text('Visit',style: TextStyle(color: Colors.black87),))
+          TextButton(
+              onPressed: () {},
+              child: Text(
+                'Visit',
+                style: TextStyle(color: Colors.black87),
+              ))
         ],
       ),
       body: LayoutBuilder(
@@ -386,7 +395,6 @@ print(images);
                                         children: [
                                           Text('Product Name :$details'),
                                           Text('Sell : $sell'),
-
                                         ],
                                       ),
                                     )
@@ -589,13 +597,14 @@ print(images);
                                                                         .size
                                                                         .width *
                                                                     1,
-                                                                   color: Colors.yellow,
+                                                                color: Colors
+                                                                    .yellow,
                                                                 child:
                                                                     StreamBuilder(
                                                                         stream: FirebaseFirestore
                                                                             .instance
                                                                             .collection(
-                                                                                'offer')
+                                                                                'products')
                                                                             .snapshots(),
                                                                         builder: (BuildContext
                                                                                 context,
@@ -616,15 +625,15 @@ print(images);
                                                                                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(1), border: Border.all(color: Colors.black87)),
                                                                                       child: Column(
                                                                                         children: [
-                                                                              Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                children: [
-                                                                                  Text("${index +1} :" ),
-                                                                                  Text( snapshot.data!.docs[index]['offer']),
-                                                                                  Text(snapshot.data!.docs[index]['time'])
-                                                                                ],
-                                                                              )
-                                                                                        ],                              
+                                                                                          Row(
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                            children: [
+                                                                                              Text("${index + 1} :"),
+                                                                                              Text(snapshot.data!.docs[index]['alldeals']['offer']),
+                                                                                              Text(snapshot.data!.docs[index]['alldeals']['time'])
+                                                                                            ],
+                                                                                          )
+                                                                                        ],
                                                                                       ),
                                                                                     ),
                                                                                   );
@@ -685,11 +694,62 @@ print(images);
                                                                     ),
                                                                   ),
                                                                   InkWell(
-                                                                    onTap: () {
-                                                                      MakeofferStoreData()
-                                                                          .MakeofferStoreData1(
-                                                                              offer.text,fore().toString());
-                                                                      offer.clear();
+                                                                    onTap:
+                                                                        () async {
+                                                                      final uid = FirebaseAuth
+                                                                          .instance
+                                                                          .currentUser!
+                                                                          .uid;
+                                                                      var m = await FirebaseFirestore
+                                                                          .instance
+                                                                          .collection(
+                                                                              'products')
+                                                                          .doc(
+                                                                              id)
+                                                                          .get();
+                                                                      var j = m[
+                                                                          'c'];
+                                                                      if (j !=
+                                                                          null)
+                                                                        a = j;
+                                                                      else
+                                                                        a = 0;
+                                                                      a++;
+
+                                                                      FirebaseFirestore
+                                                                          .instance
+                                                                          .collection(
+                                                                              'products')
+                                                                          .doc(
+                                                                              id)
+                                                                          .set(
+                                                                        {
+                                                                          "alldeals":
+                                                                              {
+                                                                            a.toString():
+                                                                                {
+                                                                              "user": uid,
+                                                                              "offer": offer.text,
+                                                                              "time": fore()
+                                                                            }
+                                                                          },
+                                                                        },
+                                                                        SetOptions(
+                                                                            merge:
+                                                                                true),
+                                                                      );
+                                                                      FirebaseFirestore
+                                                                          .instance
+                                                                          .collection(
+                                                                              'products')
+                                                                          .doc(
+                                                                              id)
+                                                                          .update({
+                                                                        "c": a
+                                                                      });
+
+                                                                      offer
+                                                                          .clear();
                                                                       // offer.clear();
                                                                     },
                                                                     child: Card(

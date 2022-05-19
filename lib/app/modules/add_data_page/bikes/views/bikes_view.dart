@@ -13,6 +13,7 @@ import 'package:path/path.dart' as Path;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:pro_exchange2/app/data/bikesData.dart';
 import 'package:pro_exchange2/app/data/furnitureData.dart';
+import 'package:pro_exchange2/app/routes/app_pages.dart';
 import 'package:resize/resize.dart';
 
 import '../controllers/bikes_controller.dart';
@@ -25,11 +26,9 @@ class BikesView extends StatefulWidget {
 }
 
 class _BikesViewState extends State<BikesView> {
-
-
-  String latitude ='Null, Press Button';
+  String latitude = 'Null, Press Button';
   String Address = 'No Address';
-
+  bool flag = false;
 
   Future<Position> _getGeoLocationPosition() async {
     bool serviceEnabled;
@@ -66,20 +65,24 @@ class _BikesViewState extends State<BikesView> {
 
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
   }
-  Future<void> GetAddressFromLatLong(Position position)async {
+
+  Future<void> GetAddressFromLatLong(Position position) async {
     try {
-      List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
       print(placemarks);
       Placemark place = placemarks[0];
-      Address = '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
-      setState(()  {
-      });
+      Address =
+          '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
+      setState(() {});
     } on MissingPluginException catch (e) {
       print(e);
     }
   }
+
   TextEditingController year = TextEditingController();
   TextEditingController km = TextEditingController();
   TextEditingController Adtitle = TextEditingController();
@@ -90,15 +93,15 @@ class _BikesViewState extends State<BikesView> {
   String Bikebrand = "abc";
   List Bikebrands = ['abc', 'def', 'ghi'];
 
-  void BikebrandSelected(String value){
+  void BikebrandSelected(String value) {
     setState(() {
       Bikebrand = value;
-
     });
   }
 
   ///
   String biding = "Sell";
+
   //var selectedDrowpdown = 'abc';
   List bids = [
     'Sell',
@@ -122,14 +125,13 @@ class _BikesViewState extends State<BikesView> {
   List<String> a = List<String>.filled(0, '', growable: true);
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-
-void cleartext(){
-  year.clear();
-  km.clear();
-  Adtitle.clear();
-  description.clear();
-  price.clear();
-}
+  void cleartext() {
+    year.clear();
+    km.clear();
+    Adtitle.clear();
+    description.clear();
+    price.clear();
+  }
 
   @override
   void dispose() {
@@ -141,9 +143,6 @@ void cleartext(){
     description.dispose();
     price.dispose();
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -160,23 +159,19 @@ void cleartext(){
                 // width: width(context)*1,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(35.0),
-
                 ),
-                child:  DropdownButtonHideUnderline(
+                child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
                       isExpanded: true,
                       hint: Text("Select"),
                       value: Bikebrand as String,
                       onChanged: (newValue) {
-
                         BikebrandSelected(newValue!);
                       },
-                      items: Bikebrands
-                          .map((fc) => DropdownMenuItem<String>(
-                        child: Text(fc),
-                        value: fc,
-                      ))
-                          .toList()),
+                      items: Bikebrands.map((fc) => DropdownMenuItem<String>(
+                            child: Text(fc),
+                            value: fc,
+                          )).toList()),
                 ),
               ),
               Container(
@@ -235,52 +230,52 @@ void cleartext(){
                           scrollDirection: Axis.horizontal,
                           itemCount: _image.length + 1,
                           gridDelegate:
-                          SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 1),
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 1),
                           itemBuilder: (context, index) {
                             return index == 0
                                 ? Center(
-                              child: IconButton(
-                                  icon: Icon(Icons.add),
-                                  onPressed: () =>
-                                  !uploading ? chooseImage() : null),
-                            )
+                                    child: IconButton(
+                                        icon: Icon(Icons.add),
+                                        onPressed: () =>
+                                            !uploading ? chooseImage() : null),
+                                  )
                                 : Container(
-                              margin: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: FileImage(_image[index - 1]),
-                                      fit: BoxFit.cover)),
-                            );
+                                    margin: EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: FileImage(_image[index - 1]),
+                                            fit: BoxFit.cover)),
+                                  );
                           }),
                     ),
                   ),
                   uploading
                       ? Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            child: Text(
-                              'uploading...',
-                              style: TextStyle(fontSize: 20),
+                          child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              child: Text(
+                                'uploading...',
+                                style: TextStyle(fontSize: 20),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          CircularProgressIndicator(
-                            value: val,
-                            valueColor:
-                            AlwaysStoppedAnimation<Color>(Colors.green),
-                          )
-                        ],
-                      ))
+                            SizedBox(
+                              height: 10,
+                            ),
+                            CircularProgressIndicator(
+                              value: val,
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.green),
+                            )
+                          ],
+                        ))
                       : Container(),
                 ],
               ),
               InkWell(
-                onTap: (){
+                onTap: () {
                   setState(() {});
                 },
                 child: Center(
@@ -291,17 +286,21 @@ void cleartext(){
                       // SizedBox(height: 10,),
                       // Text(location,style: TextStyle(color: Colors.black,fontSize: 16),),
                       // SizedBox(height: 10,),
-                      ElevatedButton(onPressed: () async{
-                        Position position = await _getGeoLocationPosition();
-                        latitude='Lat: ${position.latitude} , Long: ${position.longitude}';
-                        GetAddressFromLatLong(position);
-
-                      }, child: Text('Get Location')),
-                      SizedBox(height: 10,),
+                      ElevatedButton(
+                          onPressed: () async {
+                            Position position = await _getGeoLocationPosition();
+                            latitude =
+                                'Lat: ${position.latitude} , Long: ${position.longitude}';
+                            GetAddressFromLatLong(position);
+                          },
+                          child: Text('Get Location')),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Container(
-                        padding: EdgeInsets.only(top: 10,left: 5,right: 5),
-
-                        height: 60,width: 200,
+                        padding: EdgeInsets.only(top: 10, left: 5, right: 5),
+                        height: 60,
+                        width: 200,
                         child: ListView(
                           scrollDirection: Axis.vertical,
                           children: [
@@ -329,51 +328,81 @@ void cleartext(){
                 // width: width(context)*1,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(35.0),
-
                 ),
-                child:  DropdownButtonHideUnderline(
+                child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
                       isExpanded: true,
                       hint: Text("Select"),
                       value: biding as String,
                       onChanged: (newValue) {
-
                         bidsselected(newValue!);
                       },
                       items: bids
                           .map((fc) => DropdownMenuItem<String>(
-                        child: Text(fc),
-                        value: fc,
-                      ))
+                                child: Text(fc),
+                                value: fc,
+                              ))
                           .toList()),
                 ),
               ),
-
               MaterialButton(
                 onPressed: () async {
+                  flag = true;
                   await uploadFile();
-     BikesStoreData().BikesData1(Bikebrand, year.text, km.text, Adtitle.text, description.text, a, biding,price.text, _auth.currentUser!.uid, 'Bikes',Address,latitude, 'B');
-     cleartext();
+
+                  BikesStoreData()
+                      .BikesData1(
+                          Bikebrand,
+                          year.text,
+                          km.text,
+                          Adtitle.text,
+                          description.text,
+                          a,
+                          biding,
+                          price.text,
+                          _auth.currentUser!.uid,
+                          'Bikes',
+                          Address,
+                          latitude,
+                          'B')
+                      .whenComplete(() {
+                    setState(() {
+                      flag = false;
+                      setState(() {
+                        cleartext();
+                        a.clear();
+                        Address='';
+                        Navigator.pop(context);
+                      });
+
+                    });
+                  });
+
+
                 },
                 child: Card(
-                  child: Container(
-                    alignment: Alignment.center,
-                    //color: Colors.yellow,
-                    height: 50.h,
-                    width: 200.w,
-                    child: Text('Save'),
+                  child: Column(
+                    children: [
+                      flag
+                          ? Center(child: CircularProgressIndicator())
+                          : Container(
+                              alignment: Alignment.center,
+                              //color: Colors.yellow,
+                              height: 50.h,
+                              width: 200.w,
+                              child: Text('Save'),
+                            ),
+                    ],
                   ),
                 ),
               ),
-
             ],
           ),
-        )
-    );
+        ));
   }
+
   get() {
-    imgRef = FirebaseFirestore.instance
-        .collection('products');
+    imgRef = FirebaseFirestore.instance.collection('products');
   }
 
   chooseImage() async {
@@ -418,5 +447,3 @@ void cleartext(){
     }
   }
 }
-
-

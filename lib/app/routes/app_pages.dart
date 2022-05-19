@@ -32,6 +32,8 @@ import '../modules/home/details/bindings/details_binding.dart';
 import '../modules/home/details/views/details_view.dart';
 import '../modules/home/views/home_view.dart';
 
+import '../modules/login/bindings/login_binding.dart';
+import '../modules/login/views/login_view.dart';
 import '../modules/order/bindings/order_binding.dart';
 import '../modules/order/chat_screen/bindings/chat_screen_binding.dart';
 import '../modules/order/chat_screen/views/chat_screen.dart';
@@ -44,6 +46,7 @@ import '../modules/profile_page/bindings/profile_page_binding.dart';
 import '../modules/profile_page/edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/profile_page/edit_profile/views/edit_profile_view.dart';
 import '../modules/profile_page/views/profile_page_view.dart';
+import '../modules/profile_page/views/profile_product_details.dart';
 import '../modules/signUp_page/bindings/sign_up_page_binding.dart';
 import '../modules/signUp_page/views/sign_up_page_view.dart';
 import '../modules/verifiers/bindings/verifiers_binding.dart';
@@ -74,6 +77,11 @@ class AppPages {
       binding: SignUpPageBinding(),
     ),
     GetPage(
+      name: _Paths.LOGIN_PAGE,
+      page: () => LoginView(),
+      binding: LoginBinding(),
+    ),
+    GetPage(
       name: _Paths.PROFILE_PAGE,
       page: () => ProfilePageView(),
       binding: ProfilePageBinding(),
@@ -86,6 +94,10 @@ class AppPages {
         GetPage(
           name: _Paths.EDIT_IMAGE,
           page: () => EditimageView(),
+        ),
+        GetPage(
+          name: _Paths.PROFILE_PRODUCT_DETAILS,
+          page: () => profile_product_details(),
         ),
       ],
     ),

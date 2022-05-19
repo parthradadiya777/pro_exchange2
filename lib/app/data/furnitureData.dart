@@ -41,7 +41,7 @@ class FurnitureStoreData {
 
       _firestore
           .collection('products')
-          .doc('furniture' + f.toString())
+          .doc()
           .set(furnitureData.toJson());
 
       res = "Success";

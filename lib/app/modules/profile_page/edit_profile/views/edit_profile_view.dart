@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pro_exchange2/app/modules/add_data_page/furniture/views/furniture_view.dart';
 
 import '../controllers/edit_profile_controller.dart';
 
@@ -14,6 +15,8 @@ class EditProfileView extends StatefulWidget {
 }
 
 class _EditProfileViewState extends State<EditProfileView> {
+  var selected;
+
   @override
   Widget build(BuildContext context) {
     final data =
@@ -24,8 +27,6 @@ class _EditProfileViewState extends State<EditProfileView> {
     var uid1 = data['uid1'];
     print(uid1);
     TextEditingController name = TextEditingController(text: category);
-    var selected;
-
     return Scaffold(
         appBar: AppBar(
           title: Text('EditProfile'),
@@ -54,19 +55,25 @@ class _EditProfileViewState extends State<EditProfileView> {
                     .snapshots(),
                 builder: (c, snapshot) {
                   return DropdownButton(
-                      items:
-                          snapshot.data!.docs.map((DocumentSnapshot document) {
+                    value: selected == null ? sell : selected,
+                    onChanged: (v) {
+                      setState(() {
+                        selected = v;
+                      });
+                    },
+                    items: bids.map((e) {
+                      return DropdownMenuItem(
+                        child: Text(e),
+                        value: e,
+                      );
+                    }).toList(),
+                  );
+                  /*snapshot.data!.docs.map((DocumentSnapshot document) {
                         return DropdownMenuItem(
                           value: document['sell'],
                           child: Text(document['sell']),
                         );
-                      }).toList(),
-                      value: selected,
-                      onChanged: (v) {
-                        setState(() {
-                          selected = v;
-                        });
-                      });
+                      }).toList(),*/
                 }),
             MaterialButton(
               onPressed: () async {
@@ -81,7 +88,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                     .collection('products')
                     .doc(uid1)
                     .update({
-                  'category': name.text,
+                  'Adtitle': name.text,
                 }).catchError((e) {
                   print(e.toString());
                 });

@@ -45,7 +45,7 @@ class MobileStoreData {
 
       _firestore
           .collection('products')
-          .doc('mobile' + m.toString())
+          .doc()
           .set(mobileData.toJson());
 
       res = "Success";

@@ -1,11 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:pro_exchange2/app/modules/login/views/phoneverify.dart';
 
 class PhoneView extends GetView {
-
   TextEditingController phone = TextEditingController();
+  TextEditingController name = TextEditingController();
+
+  var uid;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,9 +19,19 @@ class PhoneView extends GetView {
           centerTitle: true,
         ),
         body: Center(
-          child:
-          Column(
+          child: Column(
             children: [
+              Container(
+                padding: EdgeInsets.all(10),
+                child: TextFormField(
+                  controller: name,
+                  decoration: InputDecoration(
+                    hintText: 'User Name',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                ),
+              ),
               Container(
                 padding: EdgeInsets.all(10),
                 child: TextFormField(
@@ -31,11 +46,10 @@ class PhoneView extends GetView {
               ),
               MaterialButton(
                 onPressed: () async {
-                if(phone.text !=null) {
-                final v = '+91'+phone.text;
-                AuthProvider().loginwithphone(context, v);
-
-                }
+                  if (phone.text != null) {
+                    final v = '+91' + phone.text;
+                    await AuthProvider().loginwithphone(context, v, name.text);
+                  }
                 },
                 child: Card(
                   child: Container(
@@ -47,11 +61,8 @@ class PhoneView extends GetView {
                   ),
                 ),
               ),
-
             ],
           ),
-
-        )
-    );
+        ));
   }
 }

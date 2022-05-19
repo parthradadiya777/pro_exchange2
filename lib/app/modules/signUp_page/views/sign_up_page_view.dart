@@ -14,31 +14,33 @@ import '../controllers/sign_up_page_controller.dart';
 class SignUpPageView extends GetView<SignUpPageController> {
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
+  TextEditingController number = TextEditingController();
   TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Resize(
-      builder: (){
+      builder: () {
         return Scaffold(
-          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: true,
           body: SafeArea(
-            child:   LayoutBuilder(
-              builder: (BuildContext context, BoxConstraints viewportConstraints){
+            child: LayoutBuilder(
+              builder:
+                  (BuildContext context, BoxConstraints viewportConstraints) {
                 return SingleChildScrollView(
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
-                        minHeight: viewportConstraints.maxHeight
-                    ),
+                        minHeight: viewportConstraints.maxHeight),
                     child: IntrinsicHeight(
                       child: Center(
                         child: Column(
                           children: [
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 10,
+                            ),
                             Container(
                               width: 15.vh,
                               height: 15.vh,
-
                               decoration: BoxDecoration(
                                 color: textColor,
                                 border: Border.all(),
@@ -48,8 +50,9 @@ class SignUpPageView extends GetView<SignUpPageController> {
                                 fit: BoxFit.contain,
                                 child: Container(
                                   child: FittedBox(
-                                    fit:BoxFit.fitWidth,
-                                    child: Text('V L X',
+                                    fit: BoxFit.fitWidth,
+                                    child: Text(
+                                      'V L X',
                                       style: TextStyle(
                                         color: white,
                                         fontWeight: FontWeight.bold,
@@ -58,8 +61,10 @@ class SignUpPageView extends GetView<SignUpPageController> {
                                   ),
                                 ),
                               ),
-                            ),//120
-                            SizedBox(height: 10,),//for logo and text
+                            ), //120
+                            SizedBox(
+                              height: 10,
+                            ), //for logo and text
                             Container(
                               height: 80,
                               width: 80.vw,
@@ -72,29 +77,33 @@ class SignUpPageView extends GetView<SignUpPageController> {
                                       width: 80.vw,
                                       child: FittedBox(
                                         fit: BoxFit.fitWidth,
-                                        child: Text('Verified onLine Xchange',
+                                        child: Text(
+                                          'Verified onLine Xchange',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: textColor,
-                                          ),),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                     Container(
                                       width: 60.vw,
                                       child: FittedBox(
                                         fit: BoxFit.fitWidth,
-                                        child: Text('eXchange your products with trust'),
+                                        child: Text(
+                                            'eXchange your products with trust'),
                                       ),
                                     )
-
                                   ],
                                 ),
                               ),
-                            ),//60
-                            SizedBox(height: 10,),//for app name and tag  line
+                            ), //60
+                            SizedBox(
+                              height: 10,
+                            ), //for app name and tag  line
                             Container(
                               //  padding: EdgeInsets.all(10),
-                              height:280,
+                              height: 350,
                               width: 70.vw,
                               //color: Colors.yellow,
                               child: Column(
@@ -102,20 +111,44 @@ class SignUpPageView extends GetView<SignUpPageController> {
                                   TextFormField(
                                     controller: name,
                                     decoration: InputDecoration(
-                                      icon: Icon(Icons.person,color: textColor,),
+                                      icon: Icon(
+                                        Icons.person,
+                                        color: textColor,
+                                      ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(15),
-
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
                                             color: textColor,
                                             width: 3,
-                                          )
-                                      ),
+                                          )),
                                       hintText: 'User Name',
-
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  TextFormField(
+                                    controller: number,
+                                    decoration: InputDecoration(
+                                      icon: Icon(
+                                        Icons.phone,
+                                        color: textColor,
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          borderSide: BorderSide(
+                                            color: textColor,
+                                            width: 3,
+                                          )),
+                                      hintText: 'Mobile Number',
                                     ),
                                   ),
                                   SizedBox(
@@ -124,16 +157,20 @@ class SignUpPageView extends GetView<SignUpPageController> {
                                   TextFormField(
                                     controller: email,
                                     decoration: InputDecoration(
-                                      icon: Icon(Icons.email,color: Colors.blueGrey,),
+                                      icon: Icon(
+                                        Icons.email,
+                                        color: Colors.blueGrey,
+                                      ),
                                       border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15)),
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
                                       focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
                                             color: textColor,
                                             width: 3,
-                                          )
-                                      ),
+                                          )),
                                       hintText: 'Email',
                                     ),
                                   ),
@@ -145,15 +182,16 @@ class SignUpPageView extends GetView<SignUpPageController> {
                                     decoration: InputDecoration(
                                       icon: Icon(Icons.key),
                                       border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15)),
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
                                       hintText: 'Password',
                                       focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           borderSide: BorderSide(
                                             color: textColor,
                                             width: 3,
-                                          )
-                                      ),
+                                          )),
                                     ),
                                     obscureText: true,
                                   ),
@@ -162,37 +200,48 @@ class SignUpPageView extends GetView<SignUpPageController> {
                                   ),
                                   Row(
                                     children: [
-                                      Icon(Icons.done,color: textColor,),
+                                      Icon(
+                                        Icons.done,
+                                        color: textColor,
+                                      ),
                                       Expanded(
                                         child: MaterialButton(
                                           onPressed: () async {
-                                              Get.off(() => HomeView());
+                                            Get.off(() => HomeView());
                                             //   Get.to(HomeView());
                                             await AuthMethod()
                                                 .signUpUser(
-                                                name: name.text,
-                                                email: email.text,
-                                                passsword: password.text)
-                                                .whenComplete(() => Get.to(LoginView()));
+                                                    name: name.text,
+                                                    email: email.text,
+                                                    number: number.text,
+                                                    passsword: password.text)
+                                                .whenComplete(
+                                                    () => Get.to(LoginView()));
                                           },
                                           child: Container(
                                             margin: EdgeInsets.only(right: 0),
                                             width: 35.vw,
                                             height: 12.vw,
                                             decoration: BoxDecoration(
-                                              border: Border.all(color: textColor),
-                                              borderRadius: BorderRadius.circular(15,),color: textColor,),
-
+                                              border:
+                                                  Border.all(color: textColor),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                15,
+                                              ),
+                                              color: textColor,
+                                            ),
                                             child: Center(
                                               child: Container(
                                                 width: 15.vw,
-
                                                 child: FittedBox(
                                                   fit: BoxFit.fitWidth,
-                                                  child: Text('Sign Up',
+                                                  child: Text(
+                                                    'Sign Up',
                                                     style: TextStyle(
                                                       color: white,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                 ),
@@ -205,32 +254,38 @@ class SignUpPageView extends GetView<SignUpPageController> {
                                   ),
                                 ],
                               ),
-                            ),//300
-                            SizedBox(height: 10,),
+                            ), //300
+                            SizedBox(
+                              height: 10,
+                            ),
                             Container(
-
-                              height: 30 ,
+                              height: 30,
                               width: 80.vw,
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Row(
                                   children: [
                                     Text('Already have an Account?'),
-                                    SizedBox(width: 10,),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
                                     InkWell(
-                                      onTap: (){
+                                      onTap: () {
                                         Get.off(LoginView());
                                       },
-                                      child: Text('Sign In',style: TextStyle(
-                                          color: textColor,
-                                          fontSize: 20
-                                      ),),
+                                      child: Text(
+                                        'Sign In',
+                                        style: TextStyle(
+                                            color: textColor, fontSize: 20),
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
-                            ),//30
-                            SizedBox(height: 20,)
+                            ), //30
+                            SizedBox(
+                              height: 20,
+                            )
                           ],
                         ),
                       ),
@@ -242,7 +297,6 @@ class SignUpPageView extends GetView<SignUpPageController> {
           ),
         );
       },
-
     );
     // return Scaffold(
     //   resizeToAvoidBottomInset: true,
