@@ -226,8 +226,19 @@ class _profile_product_detailsState extends State<profile_product_details> {
                                       ),
                                       Expanded(
                                           child: Container(
-                                        child: Image.network(images[0]),
-                                      )),
+                                        child: Image.network(
+                                            images !=null? images[0].toString() : Text('Loading..').toString(),
+                                            loadingBuilder: (c,child,loading){
+                                            if(loading == null){
+                                              return child;
+                                            }
+                                            return Center(
+                                              child: CircularProgressIndicator(),
+                                            );
+                                          }
+                                        ),,
+                                      )
+                                      ),
                                     ],
                                   ),
                                 )),
