@@ -10,7 +10,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as Path;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:resize/resize.dart';
-import '../../../../../data/electronicsdata/Computers_Leptop.dart';
+
+import '../../../../../../data/electronicsdata/Computers_Leptop.dart';
 
 class ComutersLeptopView extends StatefulWidget {
   const ComutersLeptopView({Key? key}) : super(key: key);

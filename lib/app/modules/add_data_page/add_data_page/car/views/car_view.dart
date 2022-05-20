@@ -108,8 +108,10 @@ class _CarViewState extends State<CarView> {
   final picker = ImagePicker();
 
   List<String> a = List<String>.filled(0, '', growable: true);
+
 // Sell
   String biding = "Sell";
+
   //var selectedDrowpdown = 'abc';
   List bids = [
     'Sell',
@@ -137,6 +139,7 @@ class _CarViewState extends State<CarView> {
   String _currentAddress = '';
   Set<Marker> markers = {};
   late GoogleMapController googleMapController;
+
   @override
   Widget build(BuildContext context) {
     CarController carController = CarController();
@@ -675,15 +678,17 @@ class _CarViewState extends State<CarView> {
 
                                         height: 15.vw,
                                         width: 50.vw,
-                                        child:  flag
-                                            ? Center(child: CircularProgressIndicator())
+                                        child: flag
+                                            ? Center(
+                                                child:
+                                                    CircularProgressIndicator())
                                             : Container(
-                                          alignment: Alignment.center,
-                                          //color: Colors.yellow,
-                                          height: 50.h,
-                                          width: 200.w,
-                                          child: Text('Save'),
-                                        ),
+                                                alignment: Alignment.center,
+                                                //color: Colors.yellow,
+                                                height: 50.h,
+                                                width: 200.w,
+                                                child: Text('Save'),
+                                              ),
                                       ),
                                     ),
                                     SizedBox(

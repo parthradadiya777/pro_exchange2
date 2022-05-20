@@ -13,8 +13,9 @@ import 'package:path/path.dart' as Path;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:pro_exchange2/app/modules/model/model/electronics/washing_machine.dart';
 import 'package:resize/resize.dart';
-import '../../../../../data/electronicsdata/Fridge.dart';
-import '../../../../../data/electronicsdata/washing_machineData.dart';
+
+import '../../../../../../data/electronicsdata/Fridge.dart';
+
 
 
 
