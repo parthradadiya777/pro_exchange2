@@ -9,8 +9,9 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:resize/resize.dart';
 import 'package:path/path.dart' as Path;
-import '../../../../../data/plotData.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
+import '../../../../../../data/plotData.dart';
 
 class PlotLandView extends StatefulWidget {
   const PlotLandView({Key? key}) : super(key: key);

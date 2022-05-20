@@ -98,7 +98,6 @@ class _Verifier_SearchState extends State<Verifier_Search> {
 
         body: FirestoreSearchScaffold(
           firestoreCollectionName: 'Verifier',
-
           searchBy: 'category_list',
           scaffoldBody: Center(),
           dataListFromSnapshot: DataModel().dataListFromSnapshot,
@@ -120,11 +119,10 @@ class _Verifier_SearchState extends State<Verifier_Search> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            '${data.category_list! }',
+                            '${data.category_list!}',
                             style: Theme.of(context).textTheme.headline6,
                           ),
                         ),
@@ -150,6 +148,7 @@ class _Verifier_SearchState extends State<Verifier_Search> {
 
 class DataModel {
   final String? category_list;
+
   DataModel({
     this.category_list,
   });

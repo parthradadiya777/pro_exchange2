@@ -13,7 +13,7 @@ import 'package:path/path.dart' as Path;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:resize/resize.dart';
 
-import '../../../../../data/electronicsdata/printer_moniter.dart';
+import '../../../../../../data/electronicsdata/printer_moniter.dart';
 import '../controllers/printer_moniter_controller.dart';
 
 

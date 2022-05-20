@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:pro_exchange2/app/modules/profile_page/edit_profile/views/editimage_view.dart';
 
 import '../modules/add_data_page/bikes/bindings/bikes_binding.dart';
 import '../modules/add_data_page/bikes/views/bikes_view.dart';
@@ -31,7 +30,6 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/details/bindings/details_binding.dart';
 import '../modules/home/details/views/details_view.dart';
 import '../modules/home/views/home_view.dart';
-
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/order/bindings/order_binding.dart';
@@ -45,12 +43,16 @@ import '../modules/order/wishlist_page/views/wishlist_page_view.dart';
 import '../modules/profile_page/bindings/profile_page_binding.dart';
 import '../modules/profile_page/edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/profile_page/edit_profile/views/edit_profile_view.dart';
+import '../modules/profile_page/edit_profile/views/editimage_view.dart';
 import '../modules/profile_page/views/profile_page_view.dart';
 import '../modules/profile_page/views/profile_product_details.dart';
 import '../modules/signUp_page/bindings/sign_up_page_binding.dart';
 import '../modules/signUp_page/views/sign_up_page_view.dart';
+import '../modules/verifierDetail/bindings/verifier_detail_binding.dart';
+import '../modules/verifierDetail/views/verifier_detail_view.dart';
 import '../modules/verifiers/bindings/verifiers_binding.dart';
 import '../modules/verifiers/views/verifiers_view.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -259,6 +261,11 @@ class AppPages {
       name: _Paths.GOOGLE_MAPS,
       page: () => GoogleMapsView(),
       binding: GoogleMapsBinding(),
+    ),
+    GetPage(
+      name: _Paths.VERIFIER_DETAIL,
+      page: () => VerifierDetailView(),
+      binding: VerifierDetailBinding(),
     ),
   ];
 }

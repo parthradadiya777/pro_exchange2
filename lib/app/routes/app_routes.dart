@@ -8,7 +8,8 @@ abstract class Routes {
   static const LOGIN_PAGE = _Paths.LOGIN_PAGE;
 
   static const PROFILE_PAGE = _Paths.PROFILE_PAGE;
-  static const PROFILE_PRODUCT_DETAILS = _Paths.PROFILE_PAGE + _Paths.PROFILE_PRODUCT_DETAILS;
+  static const PROFILE_PRODUCT_DETAILS =
+      _Paths.PROFILE_PAGE + _Paths.PROFILE_PRODUCT_DETAILS;
   static const VERIFIERS = _Paths.VERIFIERS;
   static const ORDER = _Paths.ORDER;
   static const BUY_PAGE = _Paths.BUY_PAGE;
@@ -18,7 +19,7 @@ abstract class Routes {
   static const WISHLIST_PAGE = _Paths.ORDER + _Paths.WISHLIST_PAGE;
   static const PURCHASE_PRODUCT = _Paths.ORDER + _Paths.PURCHASE_PRODUCT;
   static const EDIT_PROFILE = _Paths.PROFILE_PAGE + _Paths.EDIT_PROFILE;
-  static const EDIT_IMAGE =  _Paths.PROFILE_PAGE + _Paths.EDIT_IMAGE;
+  static const EDIT_IMAGE = _Paths.PROFILE_PAGE + _Paths.EDIT_IMAGE;
   static const P = _Paths.P;
   static const ADD_DATA_PAGE = _Paths.ADD_DATA_PAGE;
   static const CAR = _Paths.ADD_DATA_PAGE + _Paths.CAR;
@@ -67,6 +68,7 @@ abstract class Routes {
   static const DETAILS = _Paths.HOME + _Paths.DETAILS;
   static const CHATS = _Paths.CHATS;
   static const CHAT_PAGE = _Paths.CHAT_PAGE;
+  static const VERIFIER_DETAIL = _Paths.VERIFIER_DETAIL;
 }
 
 abstract class _Paths {
@@ -120,4 +122,5 @@ abstract class _Paths {
   static const DETAILS = '/details';
   static const CHATS = '/chats';
   static const CHAT_PAGE = '/chat-page';
+  static const VERIFIER_DETAIL = '/verifier-detail';
 }

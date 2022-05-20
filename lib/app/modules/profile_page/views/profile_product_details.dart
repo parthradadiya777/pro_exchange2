@@ -236,7 +236,7 @@ class _profile_product_detailsState extends State<profile_product_details> {
                                               child: CircularProgressIndicator(),
                                             );
                                           }
-                                        ),,
+                                        ),
                                       )
                                       ),
                                     ],
@@ -408,7 +408,7 @@ class _profile_product_detailsState extends State<profile_product_details> {
                                                 await FlutterDocumentPicker
                                                     .openDocument();
                                             print(path);
-                                            file = File(path);
+                                            file = File(path!);
 
                                             setState(() {
                                               b = true;

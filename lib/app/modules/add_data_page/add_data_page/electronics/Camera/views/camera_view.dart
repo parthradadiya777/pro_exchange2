@@ -14,9 +14,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:pro_exchange2/app/data/electronicsdata/camera.dart';
 import 'package:pro_exchange2/app/modules/model/model/electronics/washing_machine.dart';
 import 'package:resize/resize.dart';
-import '../../../../../data/electronicsdata/Fridge.dart';
-import '../../../../../data/electronicsdata/Tv_Audio.dart';
-import '../../../../../data/electronicsdata/washing_machineData.dart';
+
 
 class CameraView extends StatefulWidget {
   const CameraView({Key? key}) : super(key: key);

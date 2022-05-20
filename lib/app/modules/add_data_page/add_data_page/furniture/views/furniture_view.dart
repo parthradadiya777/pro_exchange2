@@ -10,7 +10,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as Path;
 import 'package:resize/resize.dart';
-import '../../../../data/furnitureData.dart';
+
+import '../../../../../data/furnitureData.dart';
 
 class FurnitureView extends StatefulWidget {
   const FurnitureView({Key? key}) : super(key: key);
